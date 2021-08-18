@@ -1,0 +1,101 @@
+{
+    "app-id": "com.protonvpn.www",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "40",
+    "sdk" : "org.gnome.Sdk",
+    "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+    "command" : "protonvpn",
+    "finish-args" : [
+        "--share=ipc",
+        "--share=network",
+        "--socket=fallback-x11",
+        "--socket=wayland"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin"
+    },
+    "modules" : [
+        {
+            "name": "python3-setuptools_rust",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"setuptools_rust\""
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a5/15/00ef3b7888a10363b7c402350eda3acf395ff05bebae312d1296e528516a/semantic_version-2.8.5-py2.py3-none-any.whl",
+                    "sha256": "45e4b32ee9d6d70ba5f440ec8cc5221074c7f4b0e8918bdab748cc37912440a9"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl",
+                    "sha256": "806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"
+                },
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/82/2b/349ad916a2f032506a2c7c0810950a299f96e05d88b21797c2170bd6b2c6/setuptools_rust-0.12.1-py3-none-any.whl",
+                    "sha256": "60c9bf1423a725e472c4a2a6274598251f959f3ed5ffe7698526e78bb431b9b7"
+                }
+            ]
+        },
+        {
+            "name": "python3-pycparser",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app pycparser-2.20-py2.py3-none-any.whl"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/ae/e7/d9c3a176ca4b02024debf82342dab36efadfc5776f9c8db077e8f6e71821/pycparser-2.20-py2.py3-none-any.whl",
+                    "sha256": "7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"
+                }
+            ]
+        },
+        {
+            "name": "python3-cffi",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/2e/92/87bb61538d7e60da8a7ec247dc048f7671afe17016cd0008b3b710012804/cffi-1.14.6.tar.gz",
+                    "sha256": "c9a875ce9d7fe32887784274dd533c57909b7b1dcadcc128a2ac21331a9765dd"
+                }
+            ]
+        },
+        "python3-cryptography.json",
+        "python3-proton-client.json",
+        "python3-protonvpn-nm-lib.json",
+        {
+            "name": "python3-psutil",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"psutil\""
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/e1/b0/7276de53321c12981717490516b7e612364f2cb372ee8901bd4a66a000d7/psutil-5.8.0.tar.gz",
+                    "sha256": "0c9ccb99ab76025f2f0bbecf341d4656e9c1351db8cc8a03ccd62e318ab4b5c6"
+                }
+            ]
+        },
+        {
+            "name" : "protonvpn",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources" : [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ProtonVPN/linux-app.git"
+                }
+            ]
+        }
+    ]
+}

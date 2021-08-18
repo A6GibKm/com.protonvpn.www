@@ -1,0 +1,6 @@
+requests>=2.18.4
+bcrypt>=3.1.4
+pyopenssl>=17.5
+python-gnupg>=0.4.1
+semantic-version>=2.6
+git+git://github.com/ProtonMail/proton-python-client@master#egg=proton-client

@@ -1,0 +1,6 @@
+pyxdg
+pythondialog
+jinja2
+keyring
+distro
+git+git://github.com/ProtonVPN/protonvpn-nm-lib@master#egg=protonvpn-nm-lib
